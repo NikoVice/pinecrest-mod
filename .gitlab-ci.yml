@@ -14,11 +14,19 @@ build-job:
   script:
     - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
     
-    # Компиляция (кавычки для аргументов pawncc)
+    # Добавляем путь к библиотекам компилятора в переменную окружения
+    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
+    
+    # Проверка, что компилятор видит библиотеку (выведет версию)
+    - pawncc || true
+    
+    # Компиляция основного мода
     - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"include" "-;+" "-(+"
+    
+    # Компиляция скриптов
     - pawncc filterscripts/admin.pwn -o"build/filterscripts/admin.amx" -i"include" "-;+" "-(+"
     
-    # Копирование (кавычки для всей строки, чтобы убрать ошибку YAML)
+    # Копирование остальных файлов
     - "cp server.cfg build/ || echo 'server.cfg not found'"
     - "cp samp03svr build/ || echo 'samp03svr not found'"
     - "[ -d plugins ] && cp -r plugins/* build/plugins/ || echo 'No plugins to copy'"
