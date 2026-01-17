@@ -1,5 +1,6 @@
 stages:
   - build
+  - notify
 
 build-job:
   stage: build
@@ -38,3 +39,14 @@ build-job:
       - "samp03svr"
       - "*.so"  # Подхватит .so файлы из корня репозитория
     expire_in: 1 day
+
+notify-bot-job:
+  stage: notify
+  image: curlimages/curl:latest
+  script:
+    # Замени IP на свой. Бот должен слушать порт 8080 (как мы обсуждали ранее)
+    - curl -X POST http://72.62.3.235:6666/webhook/deploy
+  dependencies:
+    - build-job
+  only:
+    - test  # Выполнять только при пуше в основную ветку
