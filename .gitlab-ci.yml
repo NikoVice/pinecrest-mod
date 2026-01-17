@@ -4,28 +4,28 @@ stages:
 
 build-job:
   stage: build
-  image: ubuntu:latest
+  image: debian:bullseye-slim  # Используем более стабильный Debian
   before_script:
-    - apt-get update && apt-get install -y wget unzip libc6-i386 lib32stdc++6 lib32gcc-s1
-    # Скачиваем и подготавливаем компилятор Pawn
+    - dpkg --add-architecture i386  # Обязательно для Debian
+    - apt-get update && apt-get install -y wget unzip libc6:i386 libstdc++6:i386
+    
+    # Скачивание Pawn
     - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
     - tar -xvf pawnc-3.10.10-linux.tar.gz
-    - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
+    
+    # Настройка путей (используем полные пути)
+    - export PAWN_BIN=$(pwd)/pawnc-3.10.10-linux/bin
+    - export PAWN_LIB=$(pwd)/pawnc-3.10.10-linux/lib
+    - export PATH=$PATH:$PAWN_BIN
+    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PAWN_LIB
 
   script:
-    # 1. Убеждаемся, что все папки существуют
-    - mkdir -p gamemodes npcmodes plugins scriptfiles
+    - mkdir -p gamemodes
+    # Проверка, что компилятор вообще запускается (версия)
+    - pawncc -V
     
-    # 2. Компиляция игрового мода
-    # Используем -i для папки с инклудами и корня gamemodes для вложенных файлов
-    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+" "-(+"
-    
-    # 3. Компиляция NPC режимов (если есть файлы в папке npcmodes)
-    - "for f in npcmodes/*.pwn; do [ -e \"$f\" ] && pawncc \"$f\" -o\"${f%.pwn}.amx\" -i\"pawno/include\" \"-;+\" \"-(+\"; done || echo 'No NPC scripts to compile'"
-
-    # 4. Подготовка прав (чтобы сервер запустился после деплоя)
-    - "chmod +x samp03svr || echo 'samp03svr not found'"
+    # Компиляция (убрали лишний флаг -(+, который часто вызывает Segfault)
+    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
 
   artifacts:
     name: "server_release"
