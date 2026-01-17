@@ -5,31 +5,36 @@ build-job:
   stage: build
   image: ubuntu:latest
   before_script:
-    - apt-get update && apt-get install -y wget unzip libc6-i386 # Нужны для запуска 32-битного компилятора
-    # Скачиваем компилятор Pawn (pawncc)
+    - apt-get update && apt-get install -y wget unzip libc6-i386
+    # Скачиваем и подготавливаем компилятор Pawn
     - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
     - tar -xvf pawnc-3.10.10-linux.tar.gz
     - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
+    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
 
   script:
-    - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
+    # 1. Убеждаемся, что все папки существуют
+    - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # Настройка путей к библиотекам
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
+    # 2. Компиляция игрового мода
+    # Используем -i для папки с инклудами и корня gamemodes для вложенных файлов
+    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+" "-(+"
     
-    # Компиляция:
-    # -i"pawno/include" — для стандартных библиотек (a_samp)
-    # -i"gamemodes" — чтобы компилятор видел папку logic и всё, что внутри неё
-    - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+" "-(+"
-    
-    # Остальные команды копирования...
-    - "cp server.cfg build/ || echo 'server.cfg not found'"
-    - "cp samp03svr build/ || echo 'samp03svr not found'"
-    - "[ -d plugins ] && cp -r plugins/* build/plugins/ || echo 'No plugins to copy'"
-    - "[ -d scriptfiles ] && cp -r scriptfiles/* build/scriptfiles/ || echo 'No scriptfiles to copy'"
-    
+    # 3. Компиляция NPC режимов (если есть файлы в папке npcmodes)
+    - "for f in npcmodes/*.pwn; do [ -e \"$f\" ] && pawncc \"$f\" -o\"${f%.pwn}.amx\" -i\"pawno/include\" \"-;+\" \"-(+\"; done || echo 'No NPC scripts to compile'"
+
+    # 4. Подготовка прав (чтобы сервер запустился после деплоя)
+    - "chmod +x samp03svr || echo 'samp03svr not found'"
+
   artifacts:
-    name: "server_build"
+    name: "server_release"
+    # Перечисляем только то, что реально нужно на сервере
     paths:
-      - build/
-    expire_in: 1 week
+      - "gamemodes/*.amx"
+      - "npcmodes/*.amx"
+      - "plugins/*.so"
+      - "scriptfiles/"
+      - "server.cfg"
+      - "samp03svr"
+      - "*.so"  # Подхватит .so файлы из корня репозитория
+    expire_in: 1 day
