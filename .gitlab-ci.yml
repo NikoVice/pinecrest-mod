@@ -20,11 +20,10 @@ build-job:
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PAWN_LIB
 
   script:
-    - mkdir -p gamemodes
-    # Проверка, что компилятор вообще запускается (версия)
-    - pawncc -V
+    - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # Компиляция (убрали лишний флаг -(+, который часто вызывает Segfault)
+    # 1. Запуск реальной компиляции
+    # Убедись, что путь к main.pwn и папке pawno/include верный относительно корня репозитория
     - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
 
   artifacts:
