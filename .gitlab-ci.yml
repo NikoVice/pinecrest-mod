@@ -2,7 +2,7 @@ stages:
   - build
   - notify
 
-build_job:
+build-job:
   stage: build
   # Это официальный и поддерживаемый образ для компиляции Pawn
   image: southclaws/sampctl:1.6.1
