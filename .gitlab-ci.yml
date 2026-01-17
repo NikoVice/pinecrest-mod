@@ -4,27 +4,24 @@ stages:
 
 build-job:
   stage: build
-  image: mrcat95/pawn-compiler:3.10.10  # Используем более стабильный Debian
+  image: ubuntu:18.04
   before_script:
-    - dpkg --add-architecture i386  # Обязательно для Debian
-    - apt-get update && apt-get install -y wget unzip libc6:i386 libstdc++6:i386
+    # Установка необходимых зависимостей для 32-битной работы на Ubuntu
+    - apt-get update && apt-get install -y wget unzip libc6-i386 lib32stdc++6
     
-    # Скачивание Pawn
+    # Скачивание компилятора
     - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
     - tar -xvf pawnc-3.10.10-linux.tar.gz
     
-    # Настройка путей (используем полные пути)
-    - export PAWN_BIN=$(pwd)/pawnc-3.10.10-linux/bin
-    - export PAWN_LIB=$(pwd)/pawnc-3.10.10-linux/lib
-    - export PATH=$PATH:$PAWN_BIN
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PAWN_LIB
+    # Настройка путей
+    - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
+    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
 
   script:
-    # Создаем необходимые директории (если их нет в репозитории)
     - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # Запускаем компиляцию
-    # Обратите внимание: в этом образе pawncc уже находится в PATH
+    # Основная команда компиляции
+    # Я убрал лишние кавычки, чтобы bash не путался
     - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
     
   artifacts:
