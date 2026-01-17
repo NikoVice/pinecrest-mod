@@ -1,0 +1,32 @@
+stages:
+  - build
+
+build-job:
+  stage: build
+  image: ubuntu:latest
+  before_script:
+    - apt-get update && apt-get install -y wget unzip libc6-i386 # Нужны для запуска 32-битного компилятора
+    # Скачиваем компилятор Pawn (pawncc)
+    - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
+    - tar -xvf pawnc-3.10.10-linux.tar.gz
+    - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
+  script:
+    - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
+    
+    # Компиляция основного мода
+    - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"include" -;+ -(+
+    
+    # Компиляция скриптов
+    - pawncc filterscripts/admin.pwn -o"build/filterscripts/admin.amx" -i"include" -;+ -(+
+    
+    # Копируем остальные файлы, которые не требуют компиляции
+    - cp server.cfg build/
+    - cp samp03svr build/
+    - cp -r plugins/* build/plugins/ || true
+    - cp -r scriptfiles/* build/scriptfiles/ || true
+    
+  artifacts:
+    name: "server_build"
+    paths:
+      - build/
+    expire_in: 1 week
