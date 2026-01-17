@@ -14,16 +14,15 @@ build-job:
   script:
     - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
     
-    # Настройка окружения компилятора
+    # Настройка путей к библиотекам
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
     
-    # Компиляция основного мода (путь изменен на pawno/include)
-    - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"pawno/include" "-;+" "-(+"
+    # Компиляция:
+    # -i"pawno/include" — для стандартных библиотек (a_samp)
+    # -i"gamemodes" — чтобы компилятор видел папку logic и всё, что внутри неё
+    - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+" "-(+"
     
-    # Компиляция скриптов (если они есть)
-    - "pawncc filterscripts/admin.pwn -o'build/filterscripts/admin.amx' -i'pawno/include' '-;+' '-(+' || echo 'No admin.pwn to compile'"
-    
-    # Копирование остальных файлов
+    # Остальные команды копирования...
     - "cp server.cfg build/ || echo 'server.cfg not found'"
     - "cp samp03svr build/ || echo 'samp03svr not found'"
     - "[ -d plugins ] && cp -r plugins/* build/plugins/ || echo 'No plugins to copy'"
