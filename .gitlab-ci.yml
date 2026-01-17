@@ -6,7 +6,7 @@ build-job:
   stage: build
   image: ubuntu:latest
   before_script:
-    - apt-get update && apt-get install -y wget unzip libc6-i386
+    - apt-get update && apt-get install -y wget unzip libc6-i386 lib32stdc++6 lib32gcc-s1
     # Скачиваем и подготавливаем компилятор Pawn
     - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
     - tar -xvf pawnc-3.10.10-linux.tar.gz
