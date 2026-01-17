@@ -22,9 +22,15 @@ build-job:
   script:
     - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # 1. Запуск реальной компиляции
-    # Убедись, что путь к main.pwn и папке pawno/include верный относительно корня репозитория
-    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
+    # Снимаем ограничения системы на стек
+    - ulimit -s unlimited
+    
+    # Проверяем, видит ли система файлы (для диагностики)
+    - ls -R pawno/include | head -n 20
+    
+    # Запуск компиляции с оптимизацией и без лишних флагов
+    # Добавлен флаг -d0 (минимум отладки) и убран LD_LIBRARY_PATH (попробуем без него, если библиотека в папке с bin)
+    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" -d0 "-;+"
 
   artifacts:
     name: "server_release"
