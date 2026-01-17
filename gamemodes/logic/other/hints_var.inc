@@ -1,0 +1,1 @@
+#define MAX_HINTS                       48

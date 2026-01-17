@@ -1,0 +1,6 @@
+[01/17/26 14:08:34] [plugins/mysql] cache_get_value_name_int: value 'NULL' is not a number (logic/player/player_data.inc:2255)
+[01/17/26 14:08:43] [plugins/mysql] cache_get_value_name_int: value 'NULL' is not a number (logic/player/player_data.inc:2255)
+[01/17/26 14:08:43] [plugins/mysql] cache_get_value_name_int: value 'NULL' is not a number (logic/player/player_data.inc:2255)
+[01/17/26 14:08:43] [plugins/mysql] cache_get_value_name_int: value 'NULL' is not a number (logic/player/player_data.inc:2255)
+[01/17/26 14:08:43] [plugins/mysql] cache_get_value_name_float: value 'NULL' is not a number (logic/player/player_data.inc:2255)
+[01/17/26 14:08:43] [plugins/mysql] cache_get_value_name_float: value 'NULL' is not a number (logic/player/player_data.inc:2255)

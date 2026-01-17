@@ -1,0 +1,3 @@
+31 Oct 2018
+https://github.com/pawn-lang/compiler/commit/c565a5d1dff0ad4950162fc3dd98a0e00ae236fe
+https://ci.appveyor.com/project/Southclaws/compiler/builds/19927598/artifacts
