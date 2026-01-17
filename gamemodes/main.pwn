@@ -549,7 +549,6 @@ stock vac_ShowPlayerDialog(playerid, dialogid, style, caption[], info[], button1
 #endif
 #define ShowPlayerDialog vac_ShowPlayerDialog
 
-////////////////////////////////////
 IsValidRPNickName(const true_name[])
 {
     if(!(3 <= strlen(true_name) <= 20)) return false;
