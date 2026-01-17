@@ -6,7 +6,7 @@
 #define TG_URL                  "-"
 
 #define FD1                     "Pablo_Escobar"
-#define FD2                     "Nikolay_Litvenko"
+#define FD2                     "Nikolay_Vice"
 #define FD3                     "Edward_Elric"
 #define FD4                     ""
 
