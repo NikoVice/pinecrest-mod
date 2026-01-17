@@ -4,7 +4,7 @@ stages:
 
 build-job:
   stage: build
-  image: debian:bullseye-slim  # Используем более стабильный Debian
+  image: mrcat95/pawn-compiler:3.10.10  # Используем более стабильный Debian
   before_script:
     - dpkg --add-architecture i386  # Обязательно для Debian
     - apt-get update && apt-get install -y wget unzip libc6:i386 libstdc++6:i386
@@ -20,18 +20,13 @@ build-job:
     - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$PAWN_LIB
 
   script:
+    # Создаем необходимые директории (если их нет в репозитории)
     - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # Снимаем ограничения системы на стек
-    - ulimit -s unlimited
+    # Запускаем компиляцию
+    # Обратите внимание: в этом образе pawncc уже находится в PATH
+    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
     
-    # Проверяем, видит ли система файлы (для диагностики)
-    - ls -R pawno/include | head -n 20
-    
-    # Запуск компиляции с оптимизацией и без лишних флагов
-    # Добавлен флаг -d0 (минимум отладки) и убран LD_LIBRARY_PATH (попробуем без него, если библиотека в папке с bin)
-    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" -d0 "-;+"
-
   artifacts:
     name: "server_release"
     # Перечисляем только то, что реально нужно на сервере
