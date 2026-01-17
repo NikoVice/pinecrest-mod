@@ -2,28 +2,20 @@ stages:
   - build
   - notify
 
-build-job:
+build_job:
   stage: build
-  image: ubuntu:18.04
-  before_script:
-    # Установка необходимых зависимостей для 32-битной работы на Ubuntu
-    - apt-get update && apt-get install -y wget unzip libc6-i386 lib32stdc++6
-    
-    # Скачивание компилятора
-    - wget https://github.com/pawn-lang/compiler/releases/download/v3.10.10/pawnc-3.10.10-linux.tar.gz
-    - tar -xvf pawnc-3.10.10-linux.tar.gz
-    
-    # Настройка путей
-    - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
-    - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$(pwd)/pawnc-3.10.10-linux/lib
-
+  # Это официальный и поддерживаемый образ для компиляции Pawn
+  image: southclaws/sampctl:1.6.1
+  
   script:
+    # Создаем папки
     - mkdir -p gamemodes npcmodes plugins scriptfiles
     
-    # Основная команда компиляции
-    # Я убрал лишние кавычки, чтобы bash не путался
+    # В этом образе используется команда 'pawncc' (версия 3.10.10 уже внутри)
+    # Мы вызываем её напрямую через sampctl или напрямую, если она в PATH
     - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
-    
+
+
   artifacts:
     name: "server_release"
     # Перечисляем только то, что реально нужно на сервере
