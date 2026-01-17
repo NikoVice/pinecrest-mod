@@ -11,19 +11,19 @@ build-job:
     - tar -xvf pawnc-3.10.10-linux.tar.gz
     - export PATH=$PATH:$(pwd)/pawnc-3.10.10-linux/bin
   script:
-    - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
-    
-    # Компиляция основного мода
-    - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"include" -;+ -(+
-    
-    # Компиляция скриптов
-    - pawncc filterscripts/admin.pwn -o"build/filterscripts/admin.amx" -i"include" -;+ -(+
-    
-    # Копируем остальные файлы, которые не требуют компиляции
-    - cp server.cfg build/
-    - cp samp03svr build/
-    - cp -r plugins/* build/plugins/ || true
-    - cp -r scriptfiles/* build/scriptfiles/ || true
+      - mkdir -p build/gamemodes build/filterscripts build/plugins build/scriptfiles
+      
+      # Компиляция основного мода (аргументы взяты в кавычки)
+      - pawncc gamemodes/main.pwn -o"build/gamemodes/main.amx" -i"include" "-;+" "-(+"
+      
+      # Компиляция скриптов
+      - pawncc filterscripts/admin.pwn -o"build/filterscripts/admin.amx" -i"include" "-;+" "-(+"
+      
+      # Копируем остальные файлы
+      - cp server.cfg build/ || echo "server.cfg not found"
+      - cp samp03svr build/ || echo "samp03svr not found"
+      - [ -d plugins ] && cp -r plugins/* build/plugins/ || echo "No plugins to copy"
+      - [ -d scriptfiles ] && cp -r scriptfiles/* build/scriptfiles/ || echo "No scriptfiles to copy"
     
   artifacts:
     name: "server_build"
