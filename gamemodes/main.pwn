@@ -8,7 +8,7 @@
 #define FD1                     "Pablo_Escobar"
 #define FD2                     "Nikolay_Vice"
 #define FD3                     "Edward_Elric"
-#define FD4                     ""
+#define FD4                     "Vladyslav_Wdev"
 
 #define PREMIUM_GAME            1000
 #define MAX_EVENT_QUEST         11
@@ -530,9 +530,6 @@ enum {
     PICKUP_EAT = 10,
     PICKUP_HEAL
 }
-/*
-    End of pickup system
-*/
 
 new playerDialogID[MAX_PLAYERS];
 
