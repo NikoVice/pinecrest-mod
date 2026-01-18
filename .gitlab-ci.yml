@@ -18,18 +18,11 @@ build-job:
 
   artifacts:
     name: "server_release"
-    # Перечисляем только то, что реально нужно на сервере
     paths:
-      - "gamemodes/*.amx"
-      - "npcmodes/*.amx"
-      - "plugins/*.so"
-      - "scriptfiles/"
-      - "announce"
-      - "LICENSE"
-      - "samp-npc"
-      - "server.cfg"
-      - "samp03svr"
-      - "*.so"  # Подхватит .so файлы из корня репозитория
+      - "./" # Забираем вообще всё содержимое репозитория
+    exclude:
+      - ".git/" # Кроме папки самого гита
+      - ".gitlab-ci.yml"
     expire_in: 1 day
 
 notify-bot-job:
