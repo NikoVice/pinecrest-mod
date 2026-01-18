@@ -24,6 +24,9 @@ build-job:
       - "npcmodes/*.amx"
       - "plugins/*.so"
       - "scriptfiles/"
+      - "announce"
+      - "LICENSE"
+      - "samp-npc"
       - "server.cfg"
       - "samp03svr"
       - "*.so"  # Подхватит .so файлы из корня репозитория
