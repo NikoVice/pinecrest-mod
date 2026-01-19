@@ -1,0 +1,37 @@
+stages:
+  - build
+  - notify
+
+build-job:
+  stage: build
+  # Это официальный и поддерживаемый образ для компиляции Pawn
+  image: southclaws/sampctl:1.6.1
+  
+  script:
+    # Создаем папки
+    - mkdir -p gamemodes npcmodes plugins scriptfiles
+    
+    # В этом образе используется команда 'pawncc' (версия 3.10.10 уже внутри)
+    # Мы вызываем её напрямую через sampctl или напрямую, если она в PATH
+    - pawncc gamemodes/main.pwn -o"gamemodes/main.amx" -i"pawno/include" -i"gamemodes" "-;+"
+
+
+  artifacts:
+    name: "server_release"
+    paths:
+      - "./" # Забираем вообще всё содержимое репозитория
+    exclude:
+      - ".git/" # Кроме папки самого гита
+      - ".gitlab-ci.yml"
+    expire_in: 1 day
+
+notify-bot-job:
+  stage: notify
+  image: curlimages/curl:latest
+  script:
+    # Замени IP на свой. Бот должен слушать порт 8080 (как мы обсуждали ранее)
+    - curl -X POST http://72.62.3.235:6666/webhook/deploy
+  dependencies:
+    - build-job
+  only:
+    - test  # Выполнять только при пуше в основную ветку
