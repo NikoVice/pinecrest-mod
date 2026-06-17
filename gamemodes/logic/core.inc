@@ -8,6 +8,8 @@
 #define EASTER_STATUS                   0
 //#include "logic/admins/custom_sync.inc"
 
+#include "logic/server_config.inc"
+
 #include "logic/admins/anticheat.inc"
 #include "logic/admins/damage_informer.inc"
 
@@ -57,82 +59,82 @@
 #include "logic/inventory/accessories_var.inc"
 //#include "logic/admins/android_detect.inc"
 
-//START: яхярелю BILLBOARD
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ BILLBOARD
 #include "logic/biz/billboard.inc"
 
-//START: яхярелю EDITOR
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ EDITOR
 #include "logic/inventory/editor.inc"
 
-//START: яхярелю юйяеяясюпнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/inventory/accessories.inc"
 
-//START: яхярелю яйхмнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/inventory/skins.inc"
 
-//START: яхярелю TRASH
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TRASH
 #include "logic/inventory/trash.inc"
 
-//START: яхярелю INVENTORY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ INVENTORY
 #include "logic/inventory/inventory.inc"
 
-//START: яхярелю ярн
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫
 #include "logic/biz/service.inc"
 
-//START: яхярелю мюкнцнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/tax.inc"
 
-//START: яхярелю днлю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 #include "logic/houses/houses.inc"
 
-//START: яхярелю NEW LOGS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ NEW LOGS
 #include "logic/other/logs.inc"
 
-//START: яхярелю кнцнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/type_log.inc"
 
 // PLAYERS:
-#include "logic/player/player_damages.inc" //START: яхярелю DAMAGE's
-//#include "logic/player/player_items.inc" //START: яхярелю бшапюяшбюмхъ беыеи хмбемрюпъ
-#include "logic/player/player_animlist.inc" //START: яхярелю ANIMS
-#include "logic/player/player_slots.inc" //START: яхярелю якнрнб
-#include "logic/player/player_settings.inc" //START: яхярелю SETTING's
-#include "logic/player/player_walkstyle.inc" //START: яхярелю ярхкъ онундйх
-#include "logic/player/player_speedometer.inc" //START: яхярелю CAR SPEEDOMETER
-#include "logic/player/player_sparring.inc" //START: яхярелю яоюппхмцю
-#include "logic/player/player_bonfire.inc" //START: яхярелю пнгфхцюмхъ нцмъ
-#include "logic/player/player_pame.inc" //START: яхярелю нохяюмхъ оепянмюфю
-#include "logic/player/player_airball.inc" //START: яхярелю онкерю мю бнгдсьмнл ьюпе
-#include "logic/player/player_pacifist.inc" //START: яхярелю PACIFIST
-#include "logic/player/player_sitdown.inc" //START: яХЯРЕЛЮ ОНЯЮДЙХ МЮ ЯРСК
+#include "logic/player/player_damages.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ DAMAGE's
+//#include "logic/player/player_items.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
+#include "logic/player/player_animlist.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ANIMS
+#include "logic/player/player_slots.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
+#include "logic/player/player_settings.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ SETTING's
+#include "logic/player/player_walkstyle.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫
+#include "logic/player/player_speedometer.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CAR SPEEDOMETER
+#include "logic/player/player_sparring.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
+#include "logic/player/player_bonfire.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
+#include "logic/player/player_pame.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
+#include "logic/player/player_airball.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
+#include "logic/player/player_pacifist.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PACIFIST
+#include "logic/player/player_sitdown.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫
 
-//START: яхярелю наэейр рчмхмцю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/biz/vehicle_tune.inc"
 
-//START: яхярелю йнярчлнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/inventory/costume.inc"
 
-//START: яхярелю CHANGE CIVIL COINS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CHANGE CIVIL COINS
 #include "logic/inventory/change_civil_coins.inc"
 
-//START: яхярелю яюднбнцн жемрпю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/houses/garden_center.inc"
 
-//START: яхярелю PANEL
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PANEL
 #include "logic/houses/panel.inc"
 
-//START: яхярелю рпюмяонпрмшу йнлоюмхи
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/biz/transport_company.inc"
 
-//START: яхярелю TRUCKER
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TRUCKER
 #include "logic/work/trucker.inc"
 
-//START: яхярелю рпеидю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/inventory/exchange.inc"
 
-//START: яхярелю TICKET's
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TICKET's
 #include "logic/tickets/tickets_func.inc"
 
-//START: яхярелю CCTV
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CCTV
 #include "logic/cctv/cctv_cmd.inc"
 #include "logic/cctv/cctv.inc"
 #include "logic/cctv/cctv_func.inc"
@@ -152,31 +154,31 @@
 #include "logic/fractions/police/mdc_dlg.inc"
 #include "logic/fractions/police/mdc_func.inc"
 
-//START: яхярелю Army Functions
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ Army Functions
 #include "logic/fractions/army/army_func.inc"
 
-//START: яхярелю GANG
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ GANG
 #include "logic/fractions/gang/ghetto_data.inc"
 
-//START: яхярелю RAILWAY FACTORY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ RAILWAY FACTORY
 #include "logic/work/railway_factory.inc"
 
-//START: яхярелю CAR FACTORY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CAR FACTORY
 #include "logic/work/car_factory.inc"
 
-//START: яхярелю CONSTRUCTION
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CONSTRUCTION
 #include "logic/work/construction.inc"
 
-//START: яхярелю PROMOCODE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PROMOCODE
 #include "logic/player/main/promocode.inc"
 
-//START: яхярелю ROULETTE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ROULETTE
 #include "logic/inventory/roulette.inc"
 
-//START: яхярелю DONATE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ DONATE
 #include "logic/other/donate.inc"
 
-//START: яхярелю кхярхмцю ярпюмхж (Dialog/TD + MYSQL)
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ (Dialog/TD + MYSQL)
 #include "logic/other/list_page.inc"
 
 //START: FRACTIONS MAYOR
@@ -188,237 +190,237 @@
 //START: FRACTIONS NEWS
 #include "logic/fractions/news/advert.inc"
 
-//START: яхярелю BATTLE PASS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ BATTLE PASS
 #include "logic/player/main/battlepass.inc"
 
-//START: яхярелю MARKET
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ MARKET
 #include "logic/inventory/market.inc"
 
-//START: яхярелю йнялняю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/space.inc"
 
-//START: яхярелю йюгюйнб-пюганимхйнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫-О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/player/main/cossack_robbers.inc"
 
-//START: яхярелю лепнопхърхи
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/player/main/events.inc"
 
-//START: яхярелю ахмдеп
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/binder.inc"
 
-//START: яхярелю ADMINS COMMAND
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ADMINS COMMAND
 #include "logic/admins/admins_cmd.inc"
 
-//START: яхярелю дспюйю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/casino/durak.inc"
 
-//START: яхярелю якнр люьхм
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/casino/slotmachine.inc"
 
-//START: яхярелю BLACKJACK
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ BLACKJACK
 #include "logic/casino/blackjack.inc"
 
-//START: яхярелю ябернтнпнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 //#include "logic/other/trafficlights.inc"
 
-//START: яхярелю ькюцаюслнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/barrier.inc"
 
-//START: яхярелю AIRDROP
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ AIRDROP
 #include "logic/fractions/other/airdrop.inc"
 
-//START: яхярелю WARPLANE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ WARPLANE
 #include "logic/fractions/other/warplane.inc"
 
-//START: яхярелю юбрняюкнмнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/biz/car_shop.inc"
 
-//START: яхярелю юпемдш рпюмяонпрю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/biz/arends_vehicle.inc"
 
-//START: яхярелю юбрнпшмйю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/car_market.inc"
 
-//START: яхярелю йюкэъмнб
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/inventory/hookah.inc"
 
-//START: яхярелю оюпйнбнй
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/other/parkings.inc"
 
-//START: яхярелю яелеи
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/family/family_data.inc"
 #include "logic/family/family_contracts.inc"
 #include "logic/family/family_capture.inc"
 
-//START: яхярелю LOBBY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ LOBBY
 #include "logic/player/main/lobby.inc"
 
-//START: яхярелю CAPTCHA
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CAPTCHA
 #include "logic/other/captcha.inc"
 
 #if GIFT_STATUS == 1
-    //START: яхярелю GIFT
+    //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ GIFT
     #include "logic/other/gift.inc"
 #endif
-//START: яхярелю хмйюяяюрнпю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/collector.inc"
 
-//START: яхярелю цпюахрекъ
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/robber.inc"
 
-//START: яхярелю леуюмхйю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/mechanic.inc"
 
-//START: яхярелю рюйяхярю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/taxi.inc"
 
-//START: яхярелю PICKUP's
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PICKUP's
 #include "logic/streamer/pickup_streamer.inc"
 
-//START: яхярелю DRUG DEN
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ DRUG DEN
 #include "logic/fractions/other/drugden.inc"
 
-//START: яхярелю DRUGS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ DRUGS
 #include "logic/fractions/other/drugs.inc"
 
-//START: яхярелю WAREHOUSE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ WAREHOUSE
 #include "logic/fractions/other/warehouse.inc"
 
-//START: яхярелю ITEMS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ITEMS
 #include "logic/inventory/give_items.inc"
 
-//START: яхярелю LOTTO
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ LOTTO
 #include "logic/other/lotto.inc"
 
-//START: яхярелю CASE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CASE
 #include "logic/inventory/case.inc"
 
-//START: яхярелю PHONE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PHONE
 #include "logic/inventory/phone.inc"
 
-//START: яхярелю ANTI DM ZONE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ANTI DM ZONE
 #include "logic/other/antidmzone.inc"
 
-//START: яхярелю TOP
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TOP
 #include "logic/other/top.inc"
 
-//START: яхярелю WAR TOPS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ WAR TOPS
 #include "logic/fractions/other/wartops.inc"
 
-//START: яхярелю TEXTDRAW's
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TEXTDRAW's
 #include "logic/textdraws/td_streamer.inc"
 #include "logic/textdraws/td_interface.inc"
 
-//START: яхярелю THEFT CAR
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ THEFT CAR
 #include "logic/work/theftcar.inc"
 
-//START: яхярелю MISSION
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ MISSION
 #include "logic/player/main/mission.inc"
 
-//START: яхярелю TENT
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TENT
 #include "logic/inventory/tent.inc"
 
-//START: яхярелю FISH
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ FISH
 #include "logic/work/fish.inc"
 
-//START: яхярелю HUNTING
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ HUNTING
 #include "logic/work/hunting.inc"
 
-//START: яхярелю юййюсмр
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/player/player_data.inc"
 
-//START: яхярелю VK SECURITY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ VK SECURITY
 #include "logic/player/main/vk_security.inc"
 
-//START: яхярелю TG SECURITY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TG SECURITY
 #include "logic/player/main/tg_security.inc"
 
-//START: яхярелю тепл
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫
 #include "logic/work/farm.inc"
 
-//START: яхярелю BOX
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ BOX
 #include "logic/player/main/box.inc"
 
 //START: FRACTIONS DATA
 #include "logic/fractions/fractions_data.inc"
 
-//START: яхярелю CONTAINERS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CONTAINERS
 #include "logic/player/main/containers.inc"
 
-//START: яхярелю EQUIPMENT
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ EQUIPMENT
 #include "logic/inventory/equipment.inc"
 
-//START: яхярелю PANEL
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ PANEL
 #include "logic/work/greenhouses.inc"
 
-//START: яхярелю CRAFT
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CRAFT
 #include "logic/inventory/craft.inc"
 
-//START: яхярелю RESOURCES
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ RESOURCES
 #include "logic/inventory/resources.inc"
 
-//START: яхярелю VIDEO CARDS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ VIDEO CARDS
 #include "logic/houses/videocards.inc"
 
-//START: яхярелю FREELANCE HOUSE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ FREELANCE HOUSE
 #include "logic/player/main/freelance.inc"
 
-//START: яхярелю ROBBERY HOUSE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ROBBERY HOUSE
 #include "logic/robbing/robberyhouse.inc"
 
-//START: яхярелю ROBBERY BANK
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ROBBERY BANK
 #include "logic/robbing/robberybank.inc"
 
-//START: яхярелю ROBBERY FUEL
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ROBBERY FUEL
 #include "logic/robbing/robberyfuel.inc"
 
-//START: яхярелю ROBBING
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ ROBBING
 #include "logic/robbing/robbing.inc"
 
-//START: яхярелю HINTS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ HINTS
 #include "logic/other/hints.inc"
 
-//START: яхярелю UNDERGROUND BOTS
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ UNDERGROUND BOTS
 #include "logic/houses/underground.inc"
 
-//START: яхярелю DAILY
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ DAILY
 #include "logic/player/main/daily.inc"
 
-//START: яхярелю щкейрпхйю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/electric.inc"
 
-//START: яхярелю йюохрюмю ясдмю
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/oil.inc"
 
-//START: яхярелю CASKET
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ CASKET
 #include "logic/player/main/casket.inc"
 
-//START: яхярелю пелнмрмхйю днпнц
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/work/roadman.inc"
 
-//START: яхярелю пелнмрмхйю днпнц
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫
 #include "logic/player/main/radio.inc"
 
-//START: яхярелю юмрх-анр
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫-О©╫О©╫О©╫
 #include "logic/player/main/antibot.inc"
 
-//START: яхярелю RESOURCES HOUSE
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ RESOURCES HOUSE
 #include "logic/houses/resources_house.inc"
 
-//START: яхярелю TRASH BOX
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TRASH BOX
 #include "logic/player/main/trashbox.inc"
 
-//START: яхярелю TREASURE HUNTER
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ TREASURE HUNTER
 #include "logic/work/treasure_hunter.inc"
 
 /*
-//START: яхярелю NEWYEAR
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ NEWYEAR
 #include "logic/other/newyear.inc"
 */
 
-//START: яхярелю EASTER
+//START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ EASTER
 #if EASTER_STATUS == 1
     #include "logic/other/easter_event.inc"
 #endif
 
-#include "logic/other/server_news.inc" //START: яхярелю SERVER NEWS
+#include "logic/other/server_news.inc" //START: О©╫О©╫О©╫О©╫О©╫О©╫О©╫ SERVER NEWS

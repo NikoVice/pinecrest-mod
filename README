@@ -96,3 +96,70 @@ sets the game mode name. The second is the number of times it will
 repeat.
 		You can use gamemode0 to specify the first gamemode, 
 gamemode1 to specify the second, etc.
+
+
+================================================================================
+ PINECREST .env CONFIGURATION (multi-server)
+================================================================================
+
+The gamemode reads its runtime settings from an environment file so the same
+compiled gamemode can run on several servers (different database, name, id)
+without editing the Pawn source.
+
+LOCATION
+--------
+	scriptfiles/.env
+
+	SA-MP's Pawn file functions are sandboxed to the scriptfiles/ folder,
+	so the file MUST live there. A template is provided:
+
+		cp scriptfiles/.env.example scriptfiles/.env
+
+	The file is read once in OnGameModeInit() by
+	gamemodes/logic/server_config.inc. If the file (or a single key) is
+	missing, the built-in defaults are used, so the server still starts.
+
+FORMAT
+------
+	KEY=VALUE, one per line. Lines starting with '#' are comments.
+	Surrounding single/double quotes around a value are stripped.
+
+VARIABLES
+---------
+	MYSQL_HOST
+		MySQL server address.            Default: 127.0.0.1
+
+	MYSQL_USER
+		MySQL user name.                 Default: pinecrestphp
+
+	MYSQL_PASSWORD
+		MySQL password.                  Default: (built-in)
+
+	MYSQL_DATABASE
+		MySQL database name.             Default: pinecrestphp
+
+	SERVER_NAME
+		Gamemode text / browser hostname shown in the SA-MP server list.
+		                                 Default: Pinecrest RolePlay
+
+	SERVER_ID
+		Logical id of this server instance, used across the gamemode to
+		branch per-server behaviour.
+			-1  = auto-detect from the "port" value in server.cfg
+			 0  = main server, 1, 2, ... = additional servers
+		                                 Default: -1 (auto)
+
+NOTE ON PORT
+------------
+	The game listen "port" stays in server.cfg, because the SA-MP server
+	binary needs it before the gamemode runs. SERVER_ID in .env lets you
+	give each instance a stable id independent of its port.
+
+EXAMPLE (second server)
+-----------------------
+	MYSQL_HOST=127.0.0.1
+	MYSQL_USER=pinecrest2
+	MYSQL_PASSWORD=secret
+	MYSQL_DATABASE=pinecrest2
+	SERVER_NAME=Pinecrest RolePlay #2
+	SERVER_ID=1
